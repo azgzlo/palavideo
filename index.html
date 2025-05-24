@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"></head>
+<body>
+<div id="content"></div>
+
+<script src="static/js/showdown.min.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('README.md')
+            .then(response => response.text())
+            .then(text => {
+                const converter = new showdown.Converter();
+                document.getElementById('content').innerHTML = converter.makeHtml(text);
+            });
+    });
+</script>
+
+</body>
+</html>
